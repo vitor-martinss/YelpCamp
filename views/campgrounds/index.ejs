@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+   <% if(currentUser && currentUser.isAdmin) { %>
+       <div class="alert alert-info" role="alert">You are and admin!</div>
+   <% } %>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>This is the campgrounds page</h1>
+                <p>View our hand-picked campgrounds from all over the world</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+                </p>
+            </div>
+        </header>
+    
+        <div class="row" style="display:flex; flex-wrap:wrap;">
+            <div class="col-lg-12">
+                <h3>Our Most Popular Sites</h3>
+            </div>
+        
+            <% campgrounds.forEach(function(campgrounds){ %>
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="img-thumbnail">
+                      <img class="img-thumbnail" src="<%= campgrounds.image %>">
+                      <div class="caption">
+                          <h4><%= campgrounds.name %></h4>
+                      </div>
+                      <p>
+                        <a href="/campgrounds/<%= campgrounds._id %>" class="btn btn-primary">More Info</a>
+                       </p>
+                    </div> 
+                    
+               </div>
+            <% }); %>
+        </div>
+    </div>
+
+
+<% include ../partials/footer %>
